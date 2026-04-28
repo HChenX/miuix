@@ -34,6 +34,7 @@ import top.yukonga.miuix.kmp.basic.CheckboxDefaults
  * @param summary The summary of the [CheckboxPreference].
  * @param summaryColor The color of the summary.
  * @param checkboxColors The [CheckboxColors] of the [CheckboxPreference].
+ * @param startAction The [Composable] content that on the start side of the [CheckboxPreference].
  * @param endActions The [Composable] content that on the end side of the [CheckboxPreference].
  * @param checkboxLocation The location of checkbox, [CheckboxLocation.Start] or [CheckboxLocation.End].
  * @param bottomAction The [Composable] content at the bottom of the [CheckboxPreference].
@@ -52,7 +53,8 @@ fun CheckboxPreference(
     summary: String? = null,
     summaryColor: BasicComponentColors = BasicComponentDefaults.summaryColor(),
     checkboxColors: CheckboxColors = CheckboxDefaults.checkboxColors(),
-    endActions: @Composable RowScope.() -> Unit = {},
+    startAction: @Composable (() -> Unit)? = null,
+    endActions: @Composable (RowScope.() -> Unit)? = null,
     checkboxLocation: CheckboxLocation = CheckboxLocation.Start,
     bottomAction: (@Composable () -> Unit)? = null,
     insideMargin: PaddingValues = BasicComponentDefaults.InsideMargin,
@@ -60,18 +62,6 @@ fun CheckboxPreference(
     enabled: Boolean = true,
 ) {
     val currentOnCheckedChange by rememberUpdatedState(onCheckedChange)
-    val startAction = if (checkboxLocation == CheckboxLocation.Start) {
-        @Composable {
-            CheckboxPreferenceStartAction(
-                checked = checked,
-                onCheckedChange = currentOnCheckedChange,
-                enabled = enabled,
-                checkboxColors = checkboxColors,
-            )
-        }
-    } else {
-        null
-    }
 
     BasicComponent(
         modifier = modifier,
@@ -80,16 +70,41 @@ fun CheckboxPreference(
         titleColor = titleColor,
         summary = summary,
         summaryColor = summaryColor,
-        startAction = startAction,
-        endActions = {
-            Row(
-                modifier = Modifier
-                    .padding(end = 8.dp)
-                    .align(Alignment.CenterVertically)
-                    .weight(1f, fill = false),
-            ) {
-                endActions()
+        startAction = {
+            Row {
+                if (checkboxLocation == CheckboxLocation.Start) {
+                    CheckboxPreferenceStartAction(
+                        checked = checked,
+                        onCheckedChange = currentOnCheckedChange,
+                        enabled = enabled,
+                        checkboxColors = checkboxColors,
+                    )
+                }
+
+                startAction?.let {
+                    Row(
+                        modifier = Modifier
+                            .padding(start = 8.dp)
+                            .align(Alignment.CenterVertically)
+                            .weight(1f, fill = false),
+                    ) {
+                        it()
+                    }
+                }
             }
+        },
+        endActions = {
+            endActions?.let {
+                Row(
+                    modifier = Modifier
+                        .padding(end = 8.dp)
+                        .align(Alignment.CenterVertically)
+                        .weight(1f, fill = false),
+                ) {
+                    it()
+                }
+            }
+
             if (checkboxLocation == CheckboxLocation.End) {
                 CheckboxPreferenceEndAction(
                     checked = checked,
