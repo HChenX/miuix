@@ -69,28 +69,32 @@ fun RadioButtonPreference(
         titleColor = titleColor,
         summary = summary,
         summaryColor = summaryColor,
-        startAction = {
-            Row {
-                if (radioButtonLocation == RadioButtonLocation.Start) {
-                    RadioButtonPreferenceStartAction(
-                        selected = selected,
-                        onClick = currentOnClick,
-                        enabled = enabled,
-                        radioButtonColors = radioButtonColors,
-                    )
-                }
+        startAction = if (radioButtonLocation == RadioButtonLocation.Start || startAction != null) {
+            {
+                Row {
+                    if (radioButtonLocation == RadioButtonLocation.Start) {
+                        RadioButtonPreferenceStartAction(
+                            selected = selected,
+                            onClick = currentOnClick,
+                            enabled = enabled,
+                            radioButtonColors = radioButtonColors,
+                        )
+                    }
 
-                startAction?.let {
-                    Row(
-                        modifier = Modifier
-                            .padding(start = 8.dp)
-                            .align(Alignment.CenterVertically)
-                            .weight(1f, fill = false),
-                    ) {
-                        it()
+                    startAction?.let {
+                        Row(
+                            modifier = Modifier
+                                .padding(start = 8.dp)
+                                .align(Alignment.CenterVertically)
+                                .weight(1f, fill = false),
+                        ) {
+                            it()
+                        }
                     }
                 }
             }
+        } else {
+            null
         },
         endActions = {
             endActions?.let {

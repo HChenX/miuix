@@ -70,28 +70,32 @@ fun CheckboxPreference(
         titleColor = titleColor,
         summary = summary,
         summaryColor = summaryColor,
-        startAction = {
-            Row {
-                if (checkboxLocation == CheckboxLocation.Start) {
-                    CheckboxPreferenceStartAction(
-                        checked = checked,
-                        onCheckedChange = currentOnCheckedChange,
-                        enabled = enabled,
-                        checkboxColors = checkboxColors,
-                    )
-                }
+        startAction = if (checkboxLocation == CheckboxLocation.Start || startAction != null) {
+            {
+                Row {
+                    if (checkboxLocation == CheckboxLocation.Start) {
+                        CheckboxPreferenceStartAction(
+                            checked = checked,
+                            onCheckedChange = currentOnCheckedChange,
+                            enabled = enabled,
+                            checkboxColors = checkboxColors,
+                        )
+                    }
 
-                startAction?.let {
-                    Row(
-                        modifier = Modifier
-                            .padding(start = 8.dp)
-                            .align(Alignment.CenterVertically)
-                            .weight(1f, fill = false),
-                    ) {
-                        it()
+                    startAction?.let {
+                        Row(
+                            modifier = Modifier
+                                .padding(start = 8.dp)
+                                .align(Alignment.CenterVertically)
+                                .weight(1f, fill = false),
+                        ) {
+                            it()
+                        }
                     }
                 }
             }
+        } else {
+            null
         },
         endActions = {
             endActions?.let {
