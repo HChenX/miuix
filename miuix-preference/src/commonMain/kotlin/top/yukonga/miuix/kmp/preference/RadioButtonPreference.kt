@@ -33,7 +33,7 @@ import top.yukonga.miuix.kmp.basic.RadioButtonDefaults
  * @param summary The summary of the [RadioButtonPreference].
  * @param summaryColor The color of the summary.
  * @param radioButtonColors The [RadioButtonColors] of the [RadioButtonPreference].
- * @param startAction The [Composable] content that on the start side of the [RadioButtonPreference].
+ * @param startAction The [Composable] content on the start side of the [RadioButtonPreference].
  * @param endActions The [Composable] content that on the end side of the [RadioButtonPreference].
  * @param radioButtonLocation The location of radio button, [RadioButtonLocation.Start] or [RadioButtonLocation.End].
  * @param bottomAction The [Composable] content at the bottom of the [RadioButtonPreference].

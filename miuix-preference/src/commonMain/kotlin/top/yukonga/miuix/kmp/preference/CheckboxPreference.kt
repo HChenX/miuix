@@ -34,7 +34,7 @@ import top.yukonga.miuix.kmp.basic.CheckboxDefaults
  * @param summary The summary of the [CheckboxPreference].
  * @param summaryColor The color of the summary.
  * @param checkboxColors The [CheckboxColors] of the [CheckboxPreference].
- * @param startAction The [Composable] content that on the start side of the [CheckboxPreference].
+ * @param startAction The [Composable] content on the start side of the [CheckboxPreference].
  * @param endActions The [Composable] content that on the end side of the [CheckboxPreference].
  * @param checkboxLocation The location of checkbox, [CheckboxLocation.Start] or [CheckboxLocation.End].
  * @param bottomAction The [Composable] content at the bottom of the [CheckboxPreference].
