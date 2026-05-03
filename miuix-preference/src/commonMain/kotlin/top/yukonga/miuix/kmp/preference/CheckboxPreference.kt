@@ -22,6 +22,7 @@ import top.yukonga.miuix.kmp.basic.BasicComponentDefaults
 import top.yukonga.miuix.kmp.basic.Checkbox
 import top.yukonga.miuix.kmp.basic.CheckboxColors
 import top.yukonga.miuix.kmp.basic.CheckboxDefaults
+import top.yukonga.miuix.kmp.preference.internal.StartActionSlot
 
 /**
  * A checkbox with a title and a summary.
@@ -35,7 +36,7 @@ import top.yukonga.miuix.kmp.basic.CheckboxDefaults
  * @param summaryColor The color of the summary.
  * @param checkboxColors The [CheckboxColors] of the [CheckboxPreference].
  * @param startAction The [Composable] content on the start side of the [CheckboxPreference].
- * @param endActions The [Composable] content that on the end side of the [CheckboxPreference].
+ * @param endActions The [Composable] content on the end side of the [CheckboxPreference].
  * @param checkboxLocation The location of checkbox, [CheckboxLocation.Start] or [CheckboxLocation.End].
  * @param bottomAction The [Composable] content at the bottom of the [CheckboxPreference].
  * @param insideMargin The margin inside the [CheckboxPreference].
@@ -83,14 +84,13 @@ fun CheckboxPreference(
                     }
 
                     startAction?.let {
-                        Row(
+                        StartActionSlot(
                             modifier = Modifier
-                                .padding(start = 8.dp)
                                 .align(Alignment.CenterVertically)
                                 .weight(1f, fill = false),
-                        ) {
-                            it()
-                        }
+                            endSpacing = 5.dp,
+                            content = it,
+                        )
                     }
                 }
             }
@@ -145,7 +145,7 @@ private fun CheckboxPreferenceStartAction(
     }
     Checkbox(
         modifier = Modifier
-            .padding(end = 8.dp),
+            .padding(end = 5.dp),
         state = ToggleableState(checked),
         onClick = onClick,
         enabled = enabled,

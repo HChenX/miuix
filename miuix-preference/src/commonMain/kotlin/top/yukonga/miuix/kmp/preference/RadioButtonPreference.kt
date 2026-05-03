@@ -21,6 +21,7 @@ import top.yukonga.miuix.kmp.basic.BasicComponentDefaults
 import top.yukonga.miuix.kmp.basic.RadioButton
 import top.yukonga.miuix.kmp.basic.RadioButtonColors
 import top.yukonga.miuix.kmp.basic.RadioButtonDefaults
+import top.yukonga.miuix.kmp.preference.internal.StartActionSlot
 
 /**
  * A radio button with a title and a summary.
@@ -34,7 +35,7 @@ import top.yukonga.miuix.kmp.basic.RadioButtonDefaults
  * @param summaryColor The color of the summary.
  * @param radioButtonColors The [RadioButtonColors] of the [RadioButtonPreference].
  * @param startAction The [Composable] content on the start side of the [RadioButtonPreference].
- * @param endActions The [Composable] content that on the end side of the [RadioButtonPreference].
+ * @param endActions The [Composable] content on the end side of the [RadioButtonPreference].
  * @param radioButtonLocation The location of radio button, [RadioButtonLocation.Start] or [RadioButtonLocation.End].
  * @param bottomAction The [Composable] content at the bottom of the [RadioButtonPreference].
  * @param insideMargin The margin inside the [RadioButtonPreference].
@@ -82,14 +83,13 @@ fun RadioButtonPreference(
                     }
 
                     startAction?.let {
-                        Row(
+                        StartActionSlot(
                             modifier = Modifier
-                                .padding(start = 8.dp)
                                 .align(Alignment.CenterVertically)
                                 .weight(1f, fill = false),
-                        ) {
-                            it()
-                        }
+                            endSpacing = 5.dp,
+                            content = it,
+                        )
                     }
                 }
             }
@@ -143,7 +143,7 @@ private fun RadioButtonPreferenceStartAction(
     }
     RadioButton(
         modifier = Modifier
-            .padding(end = 8.dp),
+            .padding(end = 5.dp),
         selected = selected,
         onClick = wrappedOnClick,
         enabled = enabled,
