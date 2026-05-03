@@ -2,7 +2,7 @@
 
 `Surface` is a foundational container component in Miuix, used to provide consistent background and border effects for application content, offering a unified visual foundation for interface elements. It supports simple custom styles.
 
-<div style="position: relative; max-width: 700px; height: 300px; border-radius: 10px; overflow: hidden; border: 1px solid #777;">
+<div style="position: relative; height: 300px; border-radius: 10px; overflow: hidden; border: 1px solid #777;">
     <iframe id="demoIframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="../compose/index.html?id=surface" title="Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 </div>
 
@@ -89,7 +89,7 @@ Create custom styles with different shapes, colors, and borders:
 ```kotlin
 Surface(
     modifier = Modifier.size(200.dp).padding(16.dp),
-    shape = SmoothCapsuleShape(),
+    shape = CircleShape,
     color = MiuixTheme.colorScheme.secondaryContainer,
     border = BorderStroke(2.dp, MiuixTheme.colorScheme.secondary),
     shadowElevation = 8.dp

@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -52,8 +53,6 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import top.yukonga.miuix.kmp.anim.SinOutEasing
 import top.yukonga.miuix.kmp.theme.MiuixTheme
-import top.yukonga.miuix.kmp.theme.miuixShape
-import top.yukonga.miuix.kmp.utils.overScrollVertical
 import kotlin.math.abs
 import kotlin.math.min
 
@@ -137,11 +136,7 @@ fun ListPopupColumn(
         content = content,
         modifier = Modifier
             .height(IntrinsicSize.Min)
-            .overScrollVertical()
-            .verticalScroll(
-                state = scrollState,
-                overscrollEffect = null,
-            ),
+            .verticalScroll(state = scrollState),
         measurePolicy = measurePolicy,
     )
 }
@@ -522,7 +517,7 @@ fun ListPopupContent(
 ) {
     val density = LocalDensity.current
 
-    val shape = miuixShape(16.dp)
+    val shape = RoundedCornerShape(16.dp)
 
     Box(
         modifier = modifier

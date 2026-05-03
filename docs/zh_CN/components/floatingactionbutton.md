@@ -4,7 +4,7 @@
 
 此组件通常与 `Scaffold` 组件结合使用，以便在应用程序的不同页面中保持一致的布局和行为。
 
-<div style="position: relative; max-width: 700px; height: 300px; border-radius: 10px; overflow: hidden; border: 1px solid #777;">
+<div style="position: relative; height: 300px; border-radius: 10px; overflow: hidden; border: 1px solid #777;">
     <iframe id="demoIframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="../../compose/index.html?id=floatingActionButton" title="Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 </div>
 
@@ -41,7 +41,7 @@ FloatingActionButton(
 | -------------------------- | ---------------------- | ------------------------ |--------------------------------| -------- |
 | onClick                    | () -> Unit             | 点击按钮时触发的回调     | -                              | 是       |
 | modifier                   | Modifier               | 应用于按钮的修饰符       | Modifier                       | 否       |
-| shape                      | Shape                  | 按钮的形状               | SmoothCapsuleShape()           | 否       |
+| shape                      | Shape                  | 按钮的形状               | CircleShape           | 否       |
 | containerColor             | Color                  | 按钮的背景颜色           | MiuixTheme.colorScheme.primary | 否       |
 | shadowElevation            | Dp                     | 按钮的阴影高度           | FloatingActionButtonDefaults.ShadowElevation | 否       |
 | minWidth                   | Dp                     | 按钮的最小宽度           | FloatingActionButtonDefaults.MinWidth        | 否       |

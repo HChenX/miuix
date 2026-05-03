@@ -4,7 +4,7 @@
 
 This component is typically used in conjunction with the `Scaffold` component to maintain consistent layout and behavior across different pages in the application.
 
-<div style="position: relative; max-width: 700px; height: 300px; border-radius: 10px; overflow: hidden; border: 1px solid #777;">
+<div style="position: relative; height: 300px; border-radius: 10px; overflow: hidden; border: 1px solid #777;">
     <iframe id="demoIframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="../compose/index.html?id=floatingActionButton" title="Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 </div>
 
@@ -41,7 +41,7 @@ Since this component is typically used for the most common actions, it does not 
 | -------------------------- | ---------------------- | ----------------------------------- |--------------------------------| -------- |
 | onClick                    | () -> Unit             | Callback triggered when clicked     | -                              | Yes      |
 | modifier                   | Modifier               | Modifier applied to the button      | Modifier                       | No       |
-| shape                      | Shape                  | Shape of the button                 | SmoothCapsuleShape()           | No       |
+| shape                      | Shape                  | Shape of the button                 | CircleShape           | No       |
 | containerColor             | Color                  | Background color of the button      | MiuixTheme.colorScheme.primary | No       |
 | shadowElevation            | Dp                     | Shadow elevation of the button      | FloatingActionButtonDefaults.ShadowElevation | No       |
 | minWidth                   | Dp                     | Minimum width of the button         | FloatingActionButtonDefaults.MinWidth  | No       |
